@@ -4,6 +4,7 @@
 Struktur repo modular agar mudah digunakan untuk resource seperti VPC, Compute Engine, Database, Monitoring, dll.
 
 ## 📂 Struktur Direktori
+
 ```text
 terraform-gcp/
 ├── main.tf
@@ -31,12 +32,10 @@ Gunakan Google Cloud Storage (GCS) sebagai remote state backend untuk menyimpan 
 Contoh buat bucket:
 
 bash
-Salin kode
 gsutil mb -p <PROJECT_ID> -c STANDARD -l asia-southeast2 gs://<BUCKET_NAME>
 Contoh backend di main.tf:
 
 hcl
-Salin kode
 terraform {
   backend "gcs" {
     bucket = "<BUCKET_NAME>"
@@ -45,27 +44,17 @@ terraform {
 }
 🚀 Cara Penggunaan
 ⚙️ Inisialisasi:
-
 bash
-Salin kode
 terraform init
 🧪 Validasi:
-
 bash
-Salin kode
 terraform validate
 🔍 Lihat rencana:
-
 bash
-Salin kode
 terraform plan
 🚀 Terapkan perubahan:
-
 bash
-Salin kode
 terraform apply
 🗑️ Hapus resource (jika perlu):
-
 bash
-Salin kode
 terraform destroy
