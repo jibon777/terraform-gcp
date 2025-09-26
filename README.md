@@ -53,3 +53,5 @@ terraform apply
 
 🗑️ Hapus resource (jika perlu):
 terraform destroy
+
+#
