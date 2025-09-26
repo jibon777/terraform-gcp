@@ -1,9 +1,10 @@
 # terraform-gcp
-
+```text
 📌 Repository ini berisi **Infrastructure as Code (IaC)** menggunakan **Terraform** untuk provisioning resource di **Google Cloud Platform (GCP)**.  
 Struktur repo modular agar mudah digunakan untuk resource seperti VPC, Compute Engine, Database, Monitoring, dll.
 
 ## 📂 Struktur Direktori
+
 terraform-gcp/
 ├── main.tf
 ├── variables.tf
@@ -11,12 +12,10 @@ terraform-gcp/
 ├── outputs.tf
 ├── versions.tf
 └── modules/
-├── network/
-├── compute/
-├── database/
-└── monitoring/
-
-text
+    ├── network/
+    ├── compute/
+    ├── database/
+    └── monitoring/
 
 ## 🔑 Prasyarat
 - Terraform >= 1.3.0  
@@ -28,11 +27,10 @@ text
 Gunakan **Google Cloud Storage (GCS)** sebagai remote state backend untuk menyimpan state Terraform.
 
 Contoh buat bucket:
-```bash
+
 gsutil mb -p <PROJECT_ID> -c STANDARD -l asia-southeast2 gs://<BUCKET_NAME>
 Contoh backend di main.tf:
 
-hcl
 terraform {
   backend "gcs" {
     bucket = "<BUCKET_NAME>"
@@ -41,17 +39,17 @@ terraform {
 }
 🚀 Cara Penggunaan
 ⚙️ Inisialisasi:
-bash
+
 terraform init
 🧪 Validasi:
-bash
+
 terraform validate
 🔍 Lihat rencana:
-bash
+
 terraform plan
 🚀 Terapkan perubahan:
-bash
+
 terraform apply
 🗑️ Hapus resource (jika perlu):
-bash
+
 terraform destroy
