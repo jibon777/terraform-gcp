@@ -53,3 +53,5 @@ terraform apply
 bash
 Salin kode
 terraform destroy
+go
+Salin kode
