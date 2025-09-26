@@ -1,7 +1,7 @@
 # terraform-gcp
 
 📌 Repository ini berisi **Infrastructure as Code (IaC)** menggunakan **Terraform** untuk provisioning resource di **Google Cloud Platform (GCP)**.  
-Struktur repo dibuat modular agar mudah digunakan untuk berbagai jenis resource (VPC, Compute Engine, Database, Monitoring, dll).
+Struktur repo modular agar mudah digunakan untuk resource seperti VPC, Compute Engine, Database, Monitoring, dll.
 
 ## 📂 Struktur Direktori
 terraform-gcp/
@@ -10,48 +10,60 @@ terraform-gcp/
 ├── terraform.tfvars
 ├── outputs.tf
 ├── versions.tf
-├── modules/
-│ ├── network/
-│ ├── compute/
-│ ├── database/
-│ └── monitoring/
+└── modules/
+├── network/
+├── compute/
+├── database/
+└── monitoring/
 
 markdown
 Salin kode
 
 ## 🔑 Prasyarat
-- ⬆️ Terraform >= 1.3.0  
-- 💻 Google Cloud SDK terinstal  
-- ☁️ Project GCP aktif dengan billing  
-- 👤 Service Account dengan akses ke GCP (misalnya `roles/editor`, `roles/storage.admin`, `roles/compute.admin`)
+- Terraform >= 1.3.0  
+- Google Cloud SDK terinstal  
+- Project GCP aktif dengan billing  
+- Service Account dengan akses ke GCP (misalnya `roles/editor`, `roles/storage.admin`, `roles/compute.admin`)
 
 ## 🗄️ Remote State
-Gunakan **Google Cloud Storage (GCS)** sebagai remote state backend untuk menyimpan state file Terraform.
+Gunakan **Google Cloud Storage (GCS)** sebagai remote state backend untuk menyimpan state Terraform.
 
-## 🚀 Cara Penggunaan
-
-⚙️ Inisialisasi Terraform  
+Contoh buat bucket:
 ```bash
+gsutil mb -p <PROJECT_ID> -c STANDARD -l asia-southeast2 gs://<BUCKET_NAME>
+Contoh backend di main.tf:
+
+hcl
+Salin kode
+terraform {
+  backend "gcs" {
+    bucket = "<BUCKET_NAME>"
+    prefix = "terraform/state"
+  }
+}
+🚀 Cara Penggunaan
+⚙️ Inisialisasi:
+
+bash
+Salin kode
 terraform init
-🧪 Validasi konfigurasi
+🧪 Validasi:
 
 bash
 Salin kode
 terraform validate
-🔍 Lihat rencana deployment
+🔍 Lihat rencana:
 
 bash
 Salin kode
 terraform plan
-🚀 Terapkan perubahan
+🚀 Terapkan perubahan:
 
 bash
 Salin kode
 terraform apply
-🗑️ Hapus resource jika diperlukan
+🗑️ Hapus resource (jika perlu):
 
 bash
 Salin kode
 terraform destroy
-go
-Salin kode
