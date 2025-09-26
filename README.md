@@ -4,8 +4,6 @@
 Struktur repo modular agar mudah digunakan untuk resource seperti VPC, Compute Engine, Database, Monitoring, dll.
 
 ## 📂 Struktur Direktori
-
-```text
 terraform-gcp/
 ├── main.tf
 ├── variables.tf
@@ -13,25 +11,24 @@ terraform-gcp/
 ├── outputs.tf
 ├── versions.tf
 └── modules/
-    ├── network/
-    ├── compute/
-    ├── database/
-    └── monitoring/
-🔑 Prasyarat
-Terraform >= 1.3.0
+├── network/
+├── compute/
+├── database/
+└── monitoring/
 
-Google Cloud SDK terinstal
+text
 
-Project GCP aktif dengan billing
+## 🔑 Prasyarat
+- Terraform >= 1.3.0  
+- Google Cloud SDK terinstal  
+- Project GCP aktif dengan billing  
+- Service Account dengan akses ke GCP (misalnya `roles/editor`, `roles/storage.admin`, `roles/compute.admin`)
 
-Service Account dengan akses ke GCP (misalnya roles/editor, roles/storage.admin, roles/compute.admin)
-
-🗄️ Remote State
-Gunakan Google Cloud Storage (GCS) sebagai remote state backend untuk menyimpan state Terraform.
+## 🗄️ Remote State
+Gunakan **Google Cloud Storage (GCS)** sebagai remote state backend untuk menyimpan state Terraform.
 
 Contoh buat bucket:
-
-bash
+```bash
 gsutil mb -p <PROJECT_ID> -c STANDARD -l asia-southeast2 gs://<BUCKET_NAME>
 Contoh backend di main.tf:
 
