@@ -38,18 +38,18 @@ terraform {
   }
 }
 🚀 Cara Penggunaan
+
 ⚙️ Inisialisasi:
-
 terraform init
+
 🧪 Validasi:
-
 terraform validate
+
 🔍 Lihat rencana:
-
 terraform plan
+
 🚀 Terapkan perubahan:
-
 terraform apply
-🗑️ Hapus resource (jika perlu):
 
+🗑️ Hapus resource (jika perlu):
 terraform destroy
